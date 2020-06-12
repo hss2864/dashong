@@ -180,6 +180,7 @@ sex_n = df_s_a['sex'].unique()
 
 
 app = dash.Dash()
+server = app.server
 app.layout = html.Div([
     
     # Tab start
@@ -1077,7 +1078,7 @@ def update_output(val):
 
 
 if __name__=='__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=False)
 
 
 # In[ ]:
