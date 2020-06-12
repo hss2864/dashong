@@ -1,1 +1,1 @@
-web: gunicorn real_gdp:server
+web: gunicorn app:server
