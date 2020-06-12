@@ -27,8 +27,7 @@ import plotly.graph_objects as go
 # In[2]:
 
 
-# path = 'Data/'
-path = 'C:/Users/HONG/Desktop/github/dashong/Data/'
+path = 'Data/'
 
 
 # ### Covid Data
