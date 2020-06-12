@@ -305,7 +305,7 @@ app.layout = html.Div([
                                                  columns=[{"name": i, "id": i} for i in df_t.columns],
                                                  data=df_t.to_dict("rows"),
                                                  style_as_list_view=True,
-                                                 style_table={'overflowY':'scroll', 'height':300},  # 지정안하면 최소 500 시작
+                                                 style_table={'overflowY':'scroll', 'height':300},
                                                  style_header={'fontWeight': 'bold', 'textAlign':'center',
                                                                'border': 'thin lightgrey solid',
                                                                'backgroundColor': 'forestgreen',
@@ -1076,9 +1076,8 @@ def update_output(val):
 # In[70]:
 
 
-# debug=True는 .py로 실행시킬때 / 주피터 내부에서 실행시키려면 False
 if __name__=='__main__':
-    app.run_server(debug=False)
+    app.run_server(debug=True)
 
 
 # In[ ]:
