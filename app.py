@@ -358,73 +358,52 @@ app.layout = html.Div([
         ##### Tab3 : Economic #####
         dcc.Tab(label='Economic impact with COVID-19',
                 children=[
-                    
-                    ## Left ##        
-                    html.Div(
-                        className='col-1',
-                        children=[
-                            
+                     ## Right ##
+                        html.Div([
+                            # Dropdown
                             html.Div([
-                                # Title
-                                html.H3(children = 'Unemployment Statistics', style = {'textAlign': 'center', 'margin': '15'}),
-                                
-                                # Dropdown
                                 html.Label('States:'), 
                                 dcc.Dropdown(id = 'id_stat2',
                                              options=[{'label':i, 'value':i} for i in states],
                                              value = 'United States',
-                                             style={'width':'90%'}),
-                                
-                                html.Div([
-
-                                    ########## Covid & Unemployment Rate line chart ##########
-                                    html.Div([
-                                        dcc.Graph(id='g_line')], style={'height':300}),
-
-                                    ########## LAU _ 3 line chart ##########
-                                    html.Div([
-                                        html.Div(
-                                            # employment
-                                            dcc.Graph(id='g_em'),
-                                            style={'width':'33%', 'display':'inline-block', 'height':300}
-                                        ),
-                                        html.Div(
-                                            # unemployment
-                                            dcc.Graph(id='g_un'),
-                                            style={'width':'33%', 'display':'inline-block', 'height':300}
-                                        ),
-                                        html.Div(
-                                            # rate
-                                            dcc.Graph(id='g_r'),
-                                            style={'width':'33%', 'display':'inline-block', 'height':300}
-                                        )], className="row")
-                                    ])
-                            ])
-                        ], style={'float':'left', 'width':'60%', 'display':'inline-block'}),
-                        
-                    
-                    ## Right ##
-                    html.Div(
-                        className='col-2',
-                        children=[
-
+                                             style={'width':'45%'})]),
+                            
+                            ########## Covid & Unemployment Rate line chart ##########
                             html.Div([
+                                dcc.Graph(id='g_line')]),
 
-                                # Title
-                                html.H3(children = 'GDP', style = {'textAlign': 'center', 'margin': '15'}),
-
-                                # Dropdown - gdp indexs
+                            ########## LAU _ 3 line chart ##########
+                            html.Div([
+                                html.Div(
+                                    # employment
+                                    dcc.Graph(id='g_em'),
+                                    style={'width':'33%', 'display':'inline-block'}
+                                ),
+                                html.Div(
+                                    # unemployment
+                                    dcc.Graph(id='g_un'),
+                                    style={'width':'33%', 'display':'inline-block'}
+                                ),
+                                html.Div(
+                                    # rate
+                                    dcc.Graph(id='g_r'),
+                                    style={'width':'33%', 'display':'inline-block'}
+                                )], className="row"),
+                            
+                            
+                            # Dropdown - gdp indexs
+                            html.Div([
                                 html.Label('Indexs:'), 
                                 dcc.Dropdown(id = 'id_index',
                                              options=[{'label':i, 'value':i} for i in indexs],
                                              value = 'Gross domestic product',
-                                             style={'width':'100%'}),
-
-                                ########## gdp line chart ##########
-                                html.Div([
-                                    dcc.Graph(id='bar_gdp')])
-                            ])
-                        ], style={'width':'40%', 'display':'inline-block'}),
+                                             style={'width':'45%'})]),
+                            
+                            ########## gdp line chart ##########
+                            html.Div([
+                                dcc.Graph(id='bar_gdp')]),
+                            
+                        ]),
             ]),
         
         
@@ -928,6 +907,7 @@ def death_age(val):
 
 ############################## [Tab3 : Economic] ##############################
 
+
 ############################################
 ### Covid & Unemployment Rate Line Chart ###
 ############################################
@@ -988,7 +968,7 @@ def update_output(val):
                        legend={'orientation':'h'},
                        yaxis = {'range': [0, ymax_*1.1], 'tickformat': ',d'},
                        xaxis = {'title': 'Date', 'showgrid': False},
-                       title = go.layout.Title(text = '<Employment>', 
+                       title = go.layout.Title(text = '<' + val + ': Employment>', 
                                                xref = 'paper'))
     # Figure
     figure = {'data': data, 'layout': layout}
@@ -1014,7 +994,7 @@ def update_output(val):
                        legend={'orientation':'h'},
                        yaxis = {'range': [0, ymax_*1.1], 'tickformat': ',d'},
                        xaxis = {'title': 'Date', 'showgrid': False},
-                       title = go.layout.Title(text = '<Unemployment>', 
+                       title = go.layout.Title( text = '<' + val + ': Unemployment>', 
                                                xref = 'paper'))
     # Figure
     figure = {'data': data, 'layout': layout}
@@ -1042,7 +1022,7 @@ def update_output(val):
         legend={'orientation':'h'},
         yaxis = {'range': [0, ymax_*1.1], 'tickformat': ',d'},
         xaxis = {'title': 'Date', 'showgrid': False},
-        title = go.layout.Title(text = '<Unemployment Rate>', 
+        title = go.layout.Title(text = '<' + val + ': Unemployment Rate>', 
                                 xref = 'paper'))
     # define figure
     figure = {'data': data, 'layout': layout}
@@ -1067,7 +1047,7 @@ def update_output(val):
     # Layout
     layout = go.Layout(yaxis = {'title' : 'Real GDP(%)', 'range': [ymin*1.5, ymax*1.5]},
                        height=500,
-                       title = go.layout.Title(text = 'Real GDP: Percent change from preceding quarter', 
+                       title = go.layout.Title(text = '<' + val + ' - Real GDP: Percent change from preceding quarter>', 
                                                xref = 'paper'))
     # Figure
     figure = {'data': data, 'layout': layout}
