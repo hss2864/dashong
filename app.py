@@ -413,15 +413,15 @@ app.layout = html.Div([
                children=[
                     html.Div(dcc.Markdown('''
                     ## Last Updates
-                    The JOHNS HOPKINS COVID-19 Data: 6/8/2020
+                    The JOHNS HOPKINS COVID-19 Data: 7/6/2020
                     
-                    The Provisional COVID-19 Death by Sex and Age Data: 5/30/2020
+                    The Provisional COVID-19 Death by Sex and Age Data: 7/2/2020
                     
-                    The Unemployment Data: 5/22/2020
+                    The Unemployment Data: 6/19/2020
                     
-                    The GDP Data: 5/28/2020
+                    The GDP Data: 6/25/2020
                     
-                    App: 6/5/2020
+                    App: 7/6/2020
                     
                     ## Summary
                     This is interactive web dashboard to view COVID-19 and Economic-Impact data from across the United States. We used the public data and  deployed on Heroku with Python and Dash.
@@ -433,9 +433,9 @@ app.layout = html.Div([
                     
                     **U.S. deaths by sex and age:** [Centers for Disease Control and Prevention(CDC)](https://data.cdc.gov/NCHS/Provisional-COVID-19-Death-Counts-by-Sex-Age-and-W/vsak-wrfu) (Next update: Every week)
                     
-                    **U.S. unemployment rate:** [Bureau of Labor Statistics(BLS)](https://www.bls.gov/lau/) (Next update: Every month - 6/19/2020)
+                    **U.S. unemployment rate:** [Bureau of Labor Statistics(BLS)](https://www.bls.gov/lau/) (Next update: Every month - 7/17/2020)
                     
-                    **U.S. GDP:** [Bureau of Economic Analysis(BEA)](https://www.bea.gov/) (Next update: Every month - 6/25/2020)
+                    **U.S. GDP:** [Bureau of Economic Analysis(BEA)](https://www.bea.gov/) (Next update: Every month - 7/30/2020)
                     
                     The data ETL process and some charts are referenced [here](https://github.com/raffg/covid-19).
                     
