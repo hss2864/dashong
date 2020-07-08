@@ -263,7 +263,7 @@ app.layout = html.Div([
                                                                            hoverinfo = 'text',
                                                                            text = df_m1['text'])],
                                                     'layout': go.Layout(geo_scope = 'usa',
-                                                                        title = {'text':'COVID-19 US Cumulative Cases by County'})}),
+                                                                        title = {'text':'COVID-19 US Cumulative Cases by State'})}),
                             ], style={'float':'left', 'width':'40%', 'display':'inline-block'}),
                         ]),
                     ]
@@ -475,7 +475,7 @@ def confirmed(val):
                         'decreasing': {'color': dash_colors['blue']},
                         'font': {'size': 15}},
               'number': {'valueformat': ',',
-                         'font': {'size': 25}},
+                         'font': {'size': 18}},
               'domain': {'y': [0, 1], 'x': [0, 1]}}
     data = [trace1]
     # Layout
@@ -506,7 +506,7 @@ def confirmed(val):
                         'decreasing': {'color': dash_colors['blue']},
                         'font': {'size': 15}},
               'number': {'valueformat': ',',
-                         'font': {'size': 25}},
+                         'font': {'size': 18}},
               'domain': {'y': [0, 1], 'x': [0, 1]}}
     data = [trace1]
     # Layout
@@ -537,7 +537,7 @@ def confirmed(val):
                         'decreasing': {'color': dash_colors['blue']},
                         'font': {'size': 15}},
               'number': {'valueformat': ',',
-                         'font': {'size': 25}},
+                         'font': {'size': 18}},
               'domain': {'y': [0, 1], 'x': [0, 1]}}
     data = [trace1]
     # Layout
@@ -569,7 +569,7 @@ def confirmed(val):
                         'decreasing': {'color': dash_colors['blue']},
                         'font': {'size': 15}},
               'number': {'valueformat': ',',
-                         'font': {'size': 25}},
+                         'font': {'size': 18}},
               'domain': {'y': [0, 1], 'x': [0, 1]}}
     data = [trace1]
     # Layout
@@ -593,7 +593,7 @@ def confirmed(val):
               'mode': 'number',
               'value': round(value * 100, 2),
               'number': {'valueformat': ',', 'suffix':'%',
-                         'font': {'size': 25}},
+                         'font': {'size': 18}},
               'domain': {'y': [0, 1], 'x': [0, 1]}}
     data = [trace1]
     # Layout
@@ -625,7 +625,7 @@ def confirmed(val):
                         'decreasing': {'color': dash_colors['blue']},
                         'font': {'size': 15}},
               'number': {'valueformat': ',',
-                         'font': {'size': 25}},
+                         'font': {'size': 18}},
               'domain': {'y': [0, 1], 'x': [0, 1]}}
     data = [trace1]
     # Layout
@@ -656,7 +656,7 @@ def confirmed(val):
                         'decreasing': {'color': dash_colors['blue']},
                         'font': {'size': 15}},
               'number': {'valueformat': ',',
-                         'font': {'size': 25}},
+                         'font': {'size': 18}},
               'domain': {'y': [0, 1], 'x': [0, 1]}}
     data = [trace1]
     # Layout
@@ -687,7 +687,7 @@ def confirmed(val):
                         'decreasing': {'color': dash_colors['blue']},
                         'font': {'size': 15}},
               'number': {'valueformat': ',',
-                         'font': {'size': 25}},
+                         'font': {'size': 18}},
               'domain': {'y': [0, 1], 'x': [0, 1]}}
     data = [trace1]
     # Layout
@@ -719,7 +719,7 @@ def confirmed(val):
                         'decreasing': {'color': dash_colors['blue']},
                         'font': {'size': 15}},
               'number': {'valueformat': ',',
-                         'font': {'size': 25}},
+                         'font': {'size': 18}},
               'domain': {'y': [0, 1], 'x': [0, 1]}}
     data = [trace1]
     # Layout
@@ -743,7 +743,7 @@ def confirmed(val):
               'mode': 'number',
               'value': round(value * 100, 2),
               'number': {'valueformat': ',', 'suffix':'%',
-                         'font': {'size': 25}},
+                         'font': {'size': 18}},
               'domain': {'y': [0, 1], 'x': [0, 1]}}
     data = [trace1]
     # Layout
