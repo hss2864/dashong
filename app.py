@@ -116,6 +116,12 @@ del(file_list)
 df_lau['time'] = df_lau['year'].astype(str) + '-' + df_lau['period'].str[1:3]
 df_lau['time'] = pd.to_datetime(df_lau.time, dayfirst=True)
 
+# Update Date
+bls_date=BeautifulSoup(requests.get('https://www.bls.gov/lau/').text, 'html.parser')
+bls_dt=bls_date.find(class_="highlight-box-green").find_all('li')
+bls_curr = datetime.datetime.strptime(str(bls_dt[0]).split('released on ')[1].split(', at')[0], "%B %d, %Y").date().strftime("%m/%d/%Y")
+bls_next = datetime.datetime.strptime(str(bls_dt[1]).split('released on ')[1].split(', at')[0], "%B %d, %Y").date().strftime("%m/%d/%Y")
+
 
 # ### GDP Data
 
@@ -131,6 +137,10 @@ df_gdp2 = df_gdp.copy()
 df_gdp2 = pd.melt(df_gdp2, id_vars = ['LineNumber', 'SeriesCode', 'LineDescription'], var_name='Time', value_name='Value')
 indexs = df_gdp2['LineDescription'].unique()
 
+bea_date=BeautifulSoup(requests.get('https://www.bea.gov/data/gdp/gross-domestic-product').text, 'html.parser')
+bea_dt=bea_date.find(class_="col-lg-12 release-dates").find_all('li')
+bea_curr = datetime.datetime.strptime(str(bea_dt[0]).replace('\xa0', '').split('strong>')[2].split('</li>')[0], "%B %d, %Y").date().strftime("%m/%d/%Y")
+bea_next = datetime.datetime.strptime(str(bea_dt[1]).replace('\xa0', '').split('strong>')[2].split('</li>')[0], "%B %d, %Y").date().strftime("%m/%d/%Y")
 
 # ### Covid Table Data
 
@@ -420,15 +430,15 @@ app.layout = html.Div([
                children=[
                     html.Div(dcc.Markdown('''
                     ## Last Updates
-                    The JOHNS HOPKINS COVID-19 Data: 7/11/2020
+                    The JOHNS HOPKINS COVID-19 Data: ''' + datetime.datetime.today().strftime("%m/%d/%Y") + '''
                     
                     The Provisional COVID-19 Death by Sex and Age Data: 7/9/2020
                     
-                    The Unemployment Data: 6/19/2020
+                    The Unemployment Data: ''' + bls_curr + '''
                     
-                    The GDP Data: 6/25/2020
+                    The GDP Data: ''' + bea_curr + '''
                     
-                    App: 7/13/2020
+                    App: ''' + datetime.datetime.today().strftime("%m/%d/%Y") + '''
                     
                     ## Summary
                     This is interactive web dashboard to view COVID-19 and Economic-Impact data from across the United States. We used the public data and  deployed on Heroku with Python and Dash.
@@ -440,9 +450,9 @@ app.layout = html.Div([
                     
                     **U.S. deaths by sex and age:** [Centers for Disease Control and Prevention(CDC)](https://data.cdc.gov/NCHS/Provisional-COVID-19-Death-Counts-by-Sex-Age-and-W/vsak-wrfu) (Next update: Every week)
                     
-                    **U.S. unemployment rate:** [Bureau of Labor Statistics(BLS)](https://www.bls.gov/lau/) (Next update: Every month - 7/17/2020)
+                    **U.S. unemployment rate:** [Bureau of Labor Statistics(BLS)](https://www.bls.gov/lau/) (Next update: Every month - ''' + bls_next + ''')
                     
-                    **U.S. GDP:** [Bureau of Economic Analysis(BEA)](https://www.bea.gov/) (Next update: Every month - 7/30/2020)
+                    **U.S. GDP:** [Bureau of Economic Analysis(BEA)](https://www.bea.gov/) (Next update: Every month - ''' + bea_next + ''')
                     
                     The data ETL process and some charts are referenced [here](https://github.com/raffg/covid-19).
                     
