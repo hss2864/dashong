@@ -160,10 +160,17 @@ df_t['Fatality Rate(%)'] = df_t['Fatality Rate(%)'].apply(lambda x : "{:.2f}".fo
 # In[11]:
 
 
-route = 'CDC/'
-file_list = glob.glob(path + route +'*_week_*.csv')
-df_s_a = pd.read_csv(file_list[-1])
-del(file_list)
+# route = 'CDC/'
+# file_list = glob.glob(path + route +'*_week_*.csv')
+# df_s_a = pd.read_csv(file_list[-1])
+# del(file_list)
+# age_n = df_s_a['age_group'].unique()
+# sex_n = df_s_a['sex'].unique()
+
+df_s_a=pd.read_csv('https://data.cdc.gov/api/views/vsak-wrfu/rows.csv?accessType=DOWNLOAD')
+df_s_a.columns = df_s_a.columns.str.lower()
+df_s_a.columns = df_s_a.columns.str.replace(" ", "_")
+df_s_a.columns = df_s_a.columns.str.replace("-", "_")
 age_n = df_s_a['age_group'].unique()
 sex_n = df_s_a['sex'].unique()
 
