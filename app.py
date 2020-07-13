@@ -420,15 +420,15 @@ app.layout = html.Div([
                children=[
                     html.Div(dcc.Markdown('''
                     ## Last Updates
-                    The JOHNS HOPKINS COVID-19 Data: 7/6/2020
+                    The JOHNS HOPKINS COVID-19 Data: 7/11/2020
                     
-                    The Provisional COVID-19 Death by Sex and Age Data: 7/2/2020
+                    The Provisional COVID-19 Death by Sex and Age Data: 7/9/2020
                     
                     The Unemployment Data: 6/19/2020
                     
                     The GDP Data: 6/25/2020
                     
-                    App: 7/6/2020
+                    App: 7/13/2020
                     
                     ## Summary
                     This is interactive web dashboard to view COVID-19 and Economic-Impact data from across the United States. We used the public data and  deployed on Heroku with Python and Dash.
